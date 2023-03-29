@@ -1,19 +1,17 @@
 package com.umg.backend.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name="empleado")
+@Table(name = "empleado")
 public class Empleado {
 
     @Id
-    @Column(name = "idempleado",nullable = false)
-    private Integer idEmpleado;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idEmpleado;
 
     @Column(name = "nombre")
     private String nombre;
@@ -27,11 +25,47 @@ public class Empleado {
     @Column(name = "dpi")
     private Integer dpi;
 
-    public Integer getIdEmpleado() {
+
+    @Column(name = "departamento_iddepartamento")
+    private Integer departamentoIddepartamento;
+
+
+    @Column(name = "puesto_idpuesto")
+    private Integer  puestoIdpuesto;
+
+
+    @OneToMany(mappedBy = "usuario_idusuario")
+    private List<Usuario> usuarioList;
+
+    public List<Usuario> getUsuarioList() {
+        return usuarioList;
+    }
+
+    public void setUsuarioList(List<Usuario> usuarioList) {
+        this.usuarioList = usuarioList;
+    }
+
+    public Integer getDepartamentoIddepartamento() {
+        return departamentoIddepartamento;
+    }
+
+    public void setDepartamentoIddepartamento(Integer departamentoIddepartamento) {
+        this.departamentoIddepartamento = departamentoIddepartamento;
+    }
+
+    public Integer getPuestoIdpuesto() {
+        return puestoIdpuesto;
+    }
+
+    public void setPuestoIdpuesto(Integer puestoIdpuesto) {
+        this.puestoIdpuesto = puestoIdpuesto;
+    }
+
+    public Long getIdEmpleado() {
         return idEmpleado;
     }
 
-    public void setIdEmpleado(Integer idEmpleado) {
+    public void setIdEmpleado(Long idEmpleado) {
         this.idEmpleado = idEmpleado;
     }
 
@@ -67,3 +101,4 @@ public class Empleado {
         this.dpi = dpi;
     }
 }
+
