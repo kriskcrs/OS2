@@ -26,15 +26,13 @@ public class Empleado {
     private Integer dpi;
 
 
-    @Column(name = "departamento_iddepartamento")
+    @Column(name = "departamento_id_departamento")
     private Integer departamentoIddepartamento;
 
-
-    @Column(name = "puesto_idpuesto")
+    @Column(name = "puesto_id_puesto")
     private Integer  puestoIdpuesto;
 
-
-    @OneToMany(mappedBy = "usuario_idusuario")
+    @OneToMany(mappedBy = "empleadoIdEmpleado")
     private List<Usuario> usuarioList;
 
     public List<Usuario> getUsuarioList() {
@@ -43,22 +41,6 @@ public class Empleado {
 
     public void setUsuarioList(List<Usuario> usuarioList) {
         this.usuarioList = usuarioList;
-    }
-
-    public Integer getDepartamentoIddepartamento() {
-        return departamentoIddepartamento;
-    }
-
-    public void setDepartamentoIddepartamento(Integer departamentoIddepartamento) {
-        this.departamentoIddepartamento = departamentoIddepartamento;
-    }
-
-    public Integer getPuestoIdpuesto() {
-        return puestoIdpuesto;
-    }
-
-    public void setPuestoIdpuesto(Integer puestoIdpuesto) {
-        this.puestoIdpuesto = puestoIdpuesto;
     }
 
     public Long getIdEmpleado() {
@@ -100,5 +82,23 @@ public class Empleado {
     public void setDpi(Integer dpi) {
         this.dpi = dpi;
     }
+
+    public Integer getDepartamentoIddepartamento() {
+        return departamentoIddepartamento;
+    }
+
+    public void setDepartamentoIddepartamento(Integer departamentoIddepartamento) {
+        this.departamentoIddepartamento = departamentoIddepartamento;
+    }
+
+    public Integer getPuestoIdpuesto() {
+        return puestoIdpuesto;
+    }
+
+    public void setPuestoIdpuesto(Integer puestoIdpuesto) {
+        this.puestoIdpuesto = puestoIdpuesto;
+    }
+
+
 }
 

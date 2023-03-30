@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("Departamento")
+@RequestMapping("departamento")
 @CrossOrigin
 public class DepartamentoServices {
 

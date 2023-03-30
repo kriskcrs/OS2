@@ -16,16 +16,9 @@ public class Departamento {
     private String nombreDepartamento;
 
 
-    @OneToMany(mappedBy = "empleado_idEmpleado")
+    @OneToMany(mappedBy = "departamentoIddepartamento")
     private List<Empleado> empleadoList;
 
-    public List<Empleado> getEmpleadoList() {
-        return empleadoList;
-    }
-
-    public void setEmpleadoList(List<Empleado> empleadoList) {
-        this.empleadoList = empleadoList;
-    }
 
     public Long getIdDepartamento() {
         return idDepartamento;
@@ -41,5 +34,13 @@ public class Departamento {
 
     public void setNombreDepartamento(String nombreDepartamento) {
         this.nombreDepartamento = nombreDepartamento;
+    }
+
+    public List<Empleado> getEmpleadoList() {
+        return empleadoList;
+    }
+
+    public void setEmpleadoList(List<Empleado> empleadoList) {
+        this.empleadoList = empleadoList;
     }
 }

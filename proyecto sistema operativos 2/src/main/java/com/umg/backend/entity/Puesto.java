@@ -26,16 +26,8 @@ public class Puesto {
     @Column(name = "fecha_salida")
     private Date fechaSalida;
 
-    @OneToMany(mappedBy = "empleado_idEmpleado")
+    @OneToMany(mappedBy = "puestoIdpuesto")
     private List<Empleado> empleadoList;
-
-    public List<Empleado> getEmpleadoList() {
-        return empleadoList;
-    }
-
-    public void setEmpleadoList(List<Empleado> empleadoList) {
-        this.empleadoList = empleadoList;
-    }
 
     public Long getIdPuesto() {
         return idPuesto;
@@ -75,5 +67,13 @@ public class Puesto {
 
     public void setFechaSalida(Date fechaSalida) {
         this.fechaSalida = fechaSalida;
+    }
+
+    public List<Empleado> getEmpleadoList() {
+        return empleadoList;
+    }
+
+    public void setEmpleadoList(List<Empleado> empleadoList) {
+        this.empleadoList = empleadoList;
     }
 }
