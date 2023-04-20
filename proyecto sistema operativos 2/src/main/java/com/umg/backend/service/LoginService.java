@@ -27,12 +27,26 @@ public class LoginService {
     @PostMapping(path = "/login")
     private Usuario Authentication(@RequestBody Usuario usuario) throws IllegalAccessException {
         Date date = new Date();
-        System.out.println(" Usuario recibido -> " +usuario.getUsuario() + " contraseña recibida -> " + usuario.getContrasena() );
+        Long con = 1L;
+        Bitacora bitacora = new Bitacora();
+        con = bitacoraRepository.count();
+        System.out.println(" USUARIO RECIBIDO -> " +usuario.getUsuario() + " CONTRASEÑA RECIBIDO -> " + usuario.getContrasena() );
         Optional<Usuario> usuariodata = usuarioRepository.findUsuarioByUsuarioAndContrasena(usuario.getUsuario(), usuario.getContrasena());
 
         if(usuariodata.isEmpty()){
-            usuario.setUsuario("");
+            System.out.println("NO SE PUDO HACER LOGIN NO EXISTE USUARIO ");
+            usuario.setIdusuario(0L);
+            usuario.setUsuario(usuario.getUsuario());
             usuario.setContrasena("");
+            usuario.setEmpleadoIdEmpleado(0);
+
+            bitacora.setIdBitacora(con+1L);
+            bitacora.setEmpleado(usuario.getUsuario());
+            bitacora.setEvento("login fallido");
+            bitacora.setFechaHora(date);
+            bitacoraRepository.save(bitacora);
+
+
         }
         else{
             Usuario usuarioEncontrado = usuariodata.get();
@@ -46,18 +60,14 @@ public class LoginService {
             usuario.setIdusuario(usuariodata.get().getIdusuario());
             usuario.setContrasena(usuariodata.get().getContrasena());
             usuario.setEmpleadoIdEmpleado(usuariodata.get().getEmpleadoIdEmpleado());
+
+            bitacora.setIdBitacora(con+1L);
+            bitacora.setEmpleado(usuario.getUsuario());
+            bitacora.setEvento("login exitoso");
+            System.out.println(date);
+            bitacora.setFechaHora(date);
+            bitacoraRepository.save(bitacora);
         }
-
-        Long con = 1L;
-
-        con = bitacoraRepository.count();
-        Bitacora bitacora = new Bitacora();
-        bitacora.setIdBitacora(con+1L);
-        bitacora.setEmpleado(usuario.getUsuario());
-        bitacora.setEvento("login");
-        bitacora.setFechaHora(date);
-
-       bitacoraRepository.save(bitacora);
 
 
 
