@@ -13,35 +13,11 @@ public class Empleado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEmpleado;
 
-    @Column(name = "nombre")
-    private String nombre;
-
-    @Column(name = "apellido")
-    private String apellido;
-
-    @Column(name = "fecha_nacimiento")
-    private Date fechaNacimiento;
-
-    @Column(name = "dpi")
-    private Integer dpi;
-
-
-    @Column(name = "departamento_id_departamento")
-    private Integer departamentoIddepartamento;
-
-    @Column(name = "puesto_id_puesto")
-    private Integer  puestoIdpuesto;
+    @Column(name = "persona_id_empleado")
+    private String personaIdEmpelado;
 
     @OneToMany(mappedBy = "empleadoIdEmpleado")
-    private List<Usuario> usuarioList;
-
-    public List<Usuario> getUsuarioList() {
-        return usuarioList;
-    }
-
-    public void setUsuarioList(List<Usuario> usuarioList) {
-        this.usuarioList = usuarioList;
-    }
+    private List<PuestoEmpleado> puestoEmpleadoList;
 
     public Long getIdEmpleado() {
         return idEmpleado;
@@ -51,54 +27,20 @@ public class Empleado {
         this.idEmpleado = idEmpleado;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getPersonaIdEmpelado() {
+        return personaIdEmpelado;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setPersonaIdEmpelado(String personaIdEmpelado) {
+        this.personaIdEmpelado = personaIdEmpelado;
     }
 
-    public String getApellido() {
-        return apellido;
+    public List<PuestoEmpleado> getPuestoEmpleadoList() {
+        return puestoEmpleadoList;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setPuestoEmpleadoList(List<PuestoEmpleado> puestoEmpleadoList) {
+        this.puestoEmpleadoList = puestoEmpleadoList;
     }
-
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public Integer getDpi() {
-        return dpi;
-    }
-
-    public void setDpi(Integer dpi) {
-        this.dpi = dpi;
-    }
-
-    public Integer getDepartamentoIddepartamento() {
-        return departamentoIddepartamento;
-    }
-
-    public void setDepartamentoIddepartamento(Integer departamentoIddepartamento) {
-        this.departamentoIddepartamento = departamentoIddepartamento;
-    }
-
-    public Integer getPuestoIdpuesto() {
-        return puestoIdpuesto;
-    }
-
-    public void setPuestoIdpuesto(Integer puestoIdpuesto) {
-        this.puestoIdpuesto = puestoIdpuesto;
-    }
-
-
 }
 

@@ -1,12 +1,16 @@
 package com.umg.backend.service;
 
 
+import com.umg.backend.entity.Bitacora;
 import com.umg.backend.entity.Usuario;
-import com.umg.backend.repository.usuarioRepository;
+import com.umg.backend.repository.UsuarioRepository;
+import com.umg.backend.repository.BitacoraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Field;
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -15,17 +19,20 @@ import java.util.Optional;
 public class LoginService {
 
     @Autowired
-    usuarioRepository usuarioRepository;
+    UsuarioRepository usuarioRepository;
+
+    @Autowired
+    BitacoraRepository bitacoraRepository;
 
     @PostMapping(path = "/login")
     private Usuario Authentication(@RequestBody Usuario usuario) throws IllegalAccessException {
-
-        System.out.println(" Usuario recibdo -> " +usuario.getUsuario() + " contraseña recibida -> " + usuario.getPassword() );
-        Optional<Usuario> usuariodata = usuarioRepository.findUsuarioByUsuarioAndPassword(usuario.getUsuario(), usuario.getPassword());
+        Date date = new Date();
+        System.out.println(" Usuario recibido -> " +usuario.getUsuario() + " contraseña recibida -> " + usuario.getContrasena() );
+        Optional<Usuario> usuariodata = usuarioRepository.findUsuarioByUsuarioAndContrasena(usuario.getUsuario(), usuario.getContrasena());
 
         if(usuariodata.isEmpty()){
             usuario.setUsuario("");
-            usuario.setPassword("");
+            usuario.setContrasena("");
         }
         else{
             Usuario usuarioEncontrado = usuariodata.get();
@@ -36,10 +43,24 @@ public class LoginService {
                 campo.setAccessible(false); // Restablece el acceso a campos privados
             }
             usuario.setUsuario(usuariodata.get().getUsuario());
-            usuario.setIdUsuario(usuariodata.get().getIdUsuario());
-            usuario.setPassword(usuariodata.get().getPassword());
+            usuario.setIdusuario(usuariodata.get().getIdusuario());
+            usuario.setContrasena(usuariodata.get().getContrasena());
             usuario.setEmpleadoIdEmpleado(usuariodata.get().getEmpleadoIdEmpleado());
         }
+
+        Long con = 1L;
+
+        con = bitacoraRepository.count();
+        Bitacora bitacora = new Bitacora();
+        bitacora.setIdBitacora(con+1L);
+        bitacora.setEmpleado(usuario.getUsuario());
+        bitacora.setEvento("login");
+        bitacora.setFechaHora(date);
+
+       bitacoraRepository.save(bitacora);
+
+
+
 
     return usuario;
     }

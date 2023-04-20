@@ -2,7 +2,7 @@ package com.umg.backend.service;
 
 
 import com.umg.backend.entity.Empleado;
-import com.umg.backend.repository.empleadoRepository;
+import com.umg.backend.repository.EmpleadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +17,7 @@ import java.util.List;
 public class EmpleadoServices {
 
     @Autowired
-    empleadoRepository empleadoRepository;
+    EmpleadoRepository empleadoRepository;
 
     @GetMapping(path = "/consulta")
     private List<Empleado> consulta(){return empleadoRepository.findAll();}

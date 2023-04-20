@@ -12,13 +12,11 @@ public class Departamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDepartamento;
 
-    @Column(name = "nombre_departamento")
+    @Column(name = "departamento_nombre")
     private String nombreDepartamento;
 
-
-    @OneToMany(mappedBy = "departamentoIddepartamento")
-    private List<Empleado> empleadoList;
-
+    @OneToMany( mappedBy ="departamentoIdDepartamento")
+    private List<Puesto> puestoList;
 
     public Long getIdDepartamento() {
         return idDepartamento;
@@ -36,11 +34,11 @@ public class Departamento {
         this.nombreDepartamento = nombreDepartamento;
     }
 
-    public List<Empleado> getEmpleadoList() {
-        return empleadoList;
+    public List<Puesto> getPuestoList() {
+        return puestoList;
     }
 
-    public void setEmpleadoList(List<Empleado> empleadoList) {
-        this.empleadoList = empleadoList;
+    public void setPuestoList(List<Puesto> puestoList) {
+        this.puestoList = puestoList;
     }
 }
