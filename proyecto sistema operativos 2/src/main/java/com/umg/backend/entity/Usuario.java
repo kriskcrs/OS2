@@ -8,23 +8,24 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuario;
+    private Long idusuario;
 
     @Column(name = "usuario")
     private String usuario;
 
-    @Column(name = "password")
-    private String password;
+
+    @Column(name = "contrasena")
+    private String contrasena;
 
     @Column(name = "empleado_id_empleado")
     private Integer  empleadoIdEmpleado;
 
-    public Long getIdUsuario() {
-        return idUsuario;
+    public Long getIdusuario() {
+        return idusuario;
     }
 
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdusuario(Long idusuario) {
+        this.idusuario = idusuario;
     }
 
     public String getUsuario() {
@@ -35,12 +36,12 @@ public class Usuario {
         this.usuario = usuario;
     }
 
-    public String getPassword() {
-        return password;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public Integer getEmpleadoIdEmpleado() {

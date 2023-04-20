@@ -1,6 +1,7 @@
 package com.umg.backend.entity;
 
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
 
 import java.util.Date;
 import java.util.List;
@@ -13,21 +14,16 @@ public class Puesto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPuesto;
 
-
     @Column(name = "nombre_puesto")
     private String nombrePuesto;
 
-    @Column(name = "salario")
-    private Integer salario;
 
-    @Column(name = "fecha_ingreso")
-    private Date fechaIngreso;
+    @Column(name = "departamento_id_departamento")
+    private Integer departamentoIdDepartamento;
 
-    @Column(name = "fecha_salida")
-    private Date fechaSalida;
 
-    @OneToMany(mappedBy = "puestoIdpuesto")
-    private List<Empleado> empleadoList;
+    @OneToMany(mappedBy = "puestoIdPuesto")
+    private List<PuestoEmpleado> puestoEmpleadoList;
 
     public Long getIdPuesto() {
         return idPuesto;
@@ -45,35 +41,19 @@ public class Puesto {
         this.nombrePuesto = nombrePuesto;
     }
 
-    public Integer getSalario() {
-        return salario;
+    public Integer getDepartamentoIdDepartamento() {
+        return departamentoIdDepartamento;
     }
 
-    public void setSalario(Integer salario) {
-        this.salario = salario;
+    public void setDepartamentoIdDepartamento(Integer departamentoIdDepartamento) {
+        this.departamentoIdDepartamento = departamentoIdDepartamento;
     }
 
-    public Date getFechaIngreso() {
-        return fechaIngreso;
+    public List<PuestoEmpleado> getPuestoEmpleadoList() {
+        return puestoEmpleadoList;
     }
 
-    public void setFechaIngreso(Date fechaIngreso) {
-        this.fechaIngreso = fechaIngreso;
-    }
-
-    public Date getFechaSalida() {
-        return fechaSalida;
-    }
-
-    public void setFechaSalida(Date fechaSalida) {
-        this.fechaSalida = fechaSalida;
-    }
-
-    public List<Empleado> getEmpleadoList() {
-        return empleadoList;
-    }
-
-    public void setEmpleadoList(List<Empleado> empleadoList) {
-        this.empleadoList = empleadoList;
+    public void setPuestoEmpleadoList(List<PuestoEmpleado> puestoEmpleadoList) {
+        this.puestoEmpleadoList = puestoEmpleadoList;
     }
 }

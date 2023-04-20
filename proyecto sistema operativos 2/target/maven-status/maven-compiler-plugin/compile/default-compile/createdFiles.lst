@@ -1,0 +1,14 @@
+com\umg\backend\service\PuestoService.class
+com\umg\backend\repository\empleadoRepository.class
+com\umg\backend\entity\Departamento.class
+com\umg\backend\entity\Puesto.class
+com\umg\backend\service\UsuarioService.class
+com\umg\backend\repository\usuarioRepository.class
+com\umg\backend\entity\Usuario.class
+com\umg\backend\service\LoginService.class
+com\umg\backend\entity\Empleado.class
+com\umg\backend\service\EmpleadoServices.class
+com\umg\backend\repository\departamentoRepository.class
+com\umg\backend\service\DepartamentoServices.class
+com\umg\backend\repository\puestoRepository.class
+com\umg\backend\BackendApplication.class
