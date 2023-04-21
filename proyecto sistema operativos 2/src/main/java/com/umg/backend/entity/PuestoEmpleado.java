@@ -10,7 +10,7 @@ public class PuestoEmpleado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPuestoEmpleado;
+    private Integer idPuestoEmpleado;
 
 
     @Column(name = "fecha_ingreso")
@@ -23,19 +23,15 @@ public class PuestoEmpleado {
     @Column(name = "puesto_id_puesto")
     private Integer puestoIdPuesto;
 
-
-
-
     @Column(name = "empleado_id_empleado")
     private Integer empleadoIdEmpleado;
 
 
-
-    public Long getIdPuestoEmpleado() {
+    public Integer getIdPuestoEmpleado() {
         return idPuestoEmpleado;
     }
 
-    public void setIdPuestoEmpleado(Long idPuestoEmpleado) {
+    public void setIdPuestoEmpleado(Integer idPuestoEmpleado) {
         this.idPuestoEmpleado = idPuestoEmpleado;
     }
 
@@ -63,15 +59,11 @@ public class PuestoEmpleado {
         this.puestoIdPuesto = puestoIdPuesto;
     }
 
-
-
     public Integer getEmpleadoIdEmpleado() {
         return empleadoIdEmpleado;
     }
 
-    public void setEmpleadoIdEmpleado(Integer empeladoIdEmpleado) {
-        this.empleadoIdEmpleado = empeladoIdEmpleado;
+    public void setEmpleadoIdEmpleado(Integer empleadoIdEmpleado) {
+        this.empleadoIdEmpleado = empleadoIdEmpleado;
     }
-
-
 }

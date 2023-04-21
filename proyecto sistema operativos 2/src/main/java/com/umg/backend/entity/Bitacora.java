@@ -10,7 +10,7 @@ import java.util.Date;
 public class Bitacora {
     @Id
     @Column(name = "id_bitacora")
-    private Long idBitacora;
+    private Integer idBitacora;
 
 
     @Column(name = "empleado")
@@ -22,11 +22,11 @@ public class Bitacora {
     @Column(name = "evento")
     private String evento;
 
-    public Long getIdBitacora() {
+    public Integer getIdBitacora() {
         return idBitacora;
     }
 
-    public void setIdBitacora(Long idBitacora) {
+    public void setIdBitacora(Integer idBitacora) {
         this.idBitacora = idBitacora;
     }
 

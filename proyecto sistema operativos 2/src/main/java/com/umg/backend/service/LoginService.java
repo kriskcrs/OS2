@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Field;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -27,20 +26,19 @@ public class LoginService {
     @PostMapping(path = "/login")
     private Usuario Authentication(@RequestBody Usuario usuario) throws IllegalAccessException {
         Date date = new Date();
-        Long con = 1L;
+        int con = 1;
         Bitacora bitacora = new Bitacora();
-        con = bitacoraRepository.count();
+        con = (int) bitacoraRepository.count();
         System.out.println(" USUARIO RECIBIDO -> " +usuario.getUsuario() + " CONTRASEÑA RECIBIDO -> " + usuario.getContrasena() );
         Optional<Usuario> usuariodata = usuarioRepository.findUsuarioByUsuarioAndContrasena(usuario.getUsuario(), usuario.getContrasena());
-
         if(usuariodata.isEmpty()){
             System.out.println("NO SE PUDO HACER LOGIN NO EXISTE USUARIO ");
-            usuario.setIdusuario(0L);
+            usuario.setIdusuario(0);
             usuario.setUsuario(usuario.getUsuario());
             usuario.setContrasena("");
             usuario.setEmpleadoIdEmpleado(0);
 
-            bitacora.setIdBitacora(con+1L);
+            bitacora.setIdBitacora(con+1);
             bitacora.setEmpleado(usuario.getUsuario());
             bitacora.setEvento("login fallido");
             bitacora.setFechaHora(date);
@@ -61,17 +59,13 @@ public class LoginService {
             usuario.setContrasena(usuariodata.get().getContrasena());
             usuario.setEmpleadoIdEmpleado(usuariodata.get().getEmpleadoIdEmpleado());
 
-            bitacora.setIdBitacora(con+1L);
+            bitacora.setIdBitacora(con+1);
             bitacora.setEmpleado(usuario.getUsuario());
             bitacora.setEvento("login exitoso");
             System.out.println(date);
             bitacora.setFechaHora(date);
             bitacoraRepository.save(bitacora);
         }
-
-
-
-
     return usuario;
     }
 }

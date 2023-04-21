@@ -10,7 +10,7 @@ public class Departamento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idDepartamento;
+    private Integer idDepartamento;
 
     @Column(name = "departamento_nombre")
     private String nombreDepartamento;
@@ -18,11 +18,12 @@ public class Departamento {
     @OneToMany( mappedBy ="departamentoIdDepartamento")
     private List<Puesto> puestoList;
 
-    public Long getIdDepartamento() {
+
+    public Integer getIdDepartamento() {
         return idDepartamento;
     }
 
-    public void setIdDepartamento(Long idDepartamento) {
+    public void setIdDepartamento(Integer idDepartamento) {
         this.idDepartamento = idDepartamento;
     }
 

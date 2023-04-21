@@ -11,27 +11,27 @@ public class Empleado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idEmpleado;
+    private Integer idEmpleado;
 
     @Column(name = "persona_id_empleado")
-    private String personaIdEmpelado;
+    private Integer personaIdEmpelado;
 
     @OneToMany(mappedBy = "empleadoIdEmpleado")
     private List<PuestoEmpleado> puestoEmpleadoList;
 
-    public Long getIdEmpleado() {
+    public Integer getIdEmpleado() {
         return idEmpleado;
     }
 
-    public void setIdEmpleado(Long idEmpleado) {
+    public void setIdEmpleado(Integer idEmpleado) {
         this.idEmpleado = idEmpleado;
     }
 
-    public String getPersonaIdEmpelado() {
+    public Integer getPersonaIdEmpelado() {
         return personaIdEmpelado;
     }
 
-    public void setPersonaIdEmpelado(String personaIdEmpelado) {
+    public void setPersonaIdEmpelado(Integer personaIdEmpelado) {
         this.personaIdEmpelado = personaIdEmpelado;
     }
 

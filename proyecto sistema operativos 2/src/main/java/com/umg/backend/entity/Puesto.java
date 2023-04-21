@@ -12,7 +12,7 @@ public class Puesto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPuesto;
+    private Integer idPuesto;
 
     @Column(name = "nombre_puesto")
     private String nombrePuesto;
@@ -25,11 +25,12 @@ public class Puesto {
     @OneToMany(mappedBy = "puestoIdPuesto")
     private List<PuestoEmpleado> puestoEmpleadoList;
 
-    public Long getIdPuesto() {
+
+    public Integer getIdPuesto() {
         return idPuesto;
     }
 
-    public void setIdPuesto(Long idPuesto) {
+    public void setIdPuesto(Integer idPuesto) {
         this.idPuesto = idPuesto;
     }
 

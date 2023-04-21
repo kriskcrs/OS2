@@ -11,7 +11,7 @@ public class Persona {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPersona;
+    private Integer idPersona;
 
     @Column(name = "nombre")
     private String nombre;
@@ -32,11 +32,11 @@ public class Persona {
     @OneToMany(mappedBy = "personaIdEmpelado" )
     private List<Empleado> empleadoList;
 
-    public Long getIdPersona() {
+    public Integer getIdPersona() {
         return idPersona;
     }
 
-    public void setIdPersona(Long idPersona) {
+    public void setIdPersona(Integer idPersona) {
         this.idPersona = idPersona;
     }
 
